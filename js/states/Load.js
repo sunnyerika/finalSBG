@@ -38,6 +38,7 @@ Load.prototype ={
     game.load.image('lake','img/lake.png');
     game.load.image('100','img/100.png');
     game.load.audio('deathSound','audio/deathSound.mp3');
+    game.load.audio('rockHit','audio/rockHit.mp3');
     game.load.audio('hitTreeRock','audio/hitTreeRock.mp3');
     game.load.audio('flyingSkier','audio/flyingSkier.mp3');
     game.load.audio('mainTheme','audio/mainTheme.mp3');

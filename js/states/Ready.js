@@ -9,7 +9,7 @@ Ready.prototype = {
     timer = game.time.create();
 
     //create a event 3s from now
-    timeEvent = timer.add(Phaser.Timer.SECOND*5,this.endTimer,this);
+    timeEvent = timer.add(Phaser.Timer.SECOND*1,this.endTimer,this);
     //start the timer
     timer.start();
     if(timer.running){

@@ -100,6 +100,9 @@ var soundFlyingSkier;
 var soundMainTheme;
 var soundDeath;
 var soundSkierGetsRolledUp;
+var soundRockHit;
+var soundWin;
+var soundFly2;
 var pickedupSkier = false;
 var startState = true;
 var collidedTR = false;
@@ -202,6 +205,9 @@ Play.prototype = {
     damagedSkier = game.add.group();
     game.physics.enable(damagedSkier);
 
+    soundFly2 = game.add.audio('fly2');
+    soundWin = game.add.audio('win');
+    soundRockHit = game.add.audio('rockHit');
     soundTreeRock = game.add.audio('hitTreeRock');
     soundFlyingSkier = game.add.audio('flyingSkier');
     soundDeath = game.add.audio('deathSound');
@@ -303,6 +309,58 @@ Play.prototype = {
         console.log("number of skiers: " + numberOfCollisionsWithSkiers);
       }
     });
+
+    rocks.forEach(function(n){
+      n.body.immovable = true;
+      n.body.moves = false;
+      //make player could collect skiers
+      if(game.physics.arcade.collide(snowBall0,n)){
+        soundRockHit.play();
+        numberOfCollisionsWithSkiers--;
+        snowBall0.animations.play('snowBallDeath');
+        snowBallDeath = true;
+        snowBall0.moves = false;
+        score+=200;
+        scoreText.text='Score:'+score;
+        numberofSkiersText = 'Skier: '+ numberOfCollisionsWithSkiers;
+        console.log("number of skiers: " + numberOfCollisionsWithSkiers);
+        if(numberOfCollisionsWithSkiers>0) {
+          var throwSkier = damagedSkier.create(snowBall0.x + 10, snowBall0.y, 'damagedSkierAtlas', 'Damage_01');
+          throwSkier.animations.add('flyingSkier', [0, 1, 2, 3, 4, 5, 6, 7], 10, false);
+          throwSkier.animations.play('flyingSkier', 10, false);
+          soundFlyingSkier.play();
+          snowBall0.y -= 100;
+          snowBall0.x += 40;
+        }
+      }
+
+    });
+
+    trees.forEach(function(n){
+      n.body.immovable = true;
+      n.body.moves = false;
+      //make player could collect skiers
+      if(game.physics.arcade.collide(snowBall0,n)){
+        soundTreeRock.play();
+        numberOfCollisionsWithSkiers--;
+        snowBall0.animations.play('snowBallDeath');
+        snowBallDeath = true;
+        snowBall0.moves = false;
+        score+=200;
+        scoreText.text='Score:'+score;
+        numberofSkiersText = 'Skier: '+ numberOfCollisionsWithSkiers;
+        console.log("number of skiers: " + numberOfCollisionsWithSkiers);
+        if(numberOfCollisionsWithSkiers>0) {
+          var throwSkier = damagedSkier.create(snowBall0.x + 10, snowBall0.y, 'damagedSkierAtlas', 'Damage_01');
+          throwSkier.animations.add('flyingSkier', [0, 1, 2, 3, 4, 5, 6, 7], 10, false);
+          throwSkier.animations.play('flyingSkier', 10, false);
+          soundFlyingSkier.play();
+          snowBall0.y -= 100;
+          snowBall0.x += 40;
+        }
+      }
+
+    });
     /*
         rocks.forEach(function(n){
           n.body.immovable = true;
@@ -320,7 +378,7 @@ Play.prototype = {
         });
         */
 
-
+/*
     rocks.forEach(function(n){
       n.body.immovable = true;
       n.body.moves = false;
@@ -361,7 +419,7 @@ Play.prototype = {
        if (game.time.now - timeCheck > 3000){
           game.state.start('GameOver')
         }
-        */
+
 
         numberofSkiersText = 'Skier: '+ numberOfCollisionsWithSkiers;
         console.log("number of skiers: " + numberOfCollisionsWithSkiers);
@@ -375,8 +433,8 @@ Play.prototype = {
         }
       }
 
-    });
-
+    });*/
+/*
     trees.forEach(function(n){
       n.body.immovable = true;
       n.body.moves = false;
@@ -397,14 +455,14 @@ Play.prototype = {
             });
           }
         });
-        */
-        //game.time.events.add(DELAY, function () {/* … */});﻿
+
+        //game.time.events.add(DELAY, function () {});﻿
         //game.time.now + 1000;
 
         //game.state.start('GameOver');
-        timer.add(3000);
-        timer.onEvent.add(game.state.start('GameOver'), this);
-        timer.start();
+       // timer.add(3000);
+        //timer.onEvent.add(game.state.start('GameOver'), this);
+        //timer.start();
         scoreText.text='Score:'+score;
         numberofSkiersText = 'Skier: '+ numberOfCollisionsWithSkiers;
         console.log("number of skiers: " + numberOfCollisionsWithSkiers);
@@ -418,7 +476,7 @@ Play.prototype = {
         }
       }
 
-    });
+    });*/
 
     /*
     if(numberOfCollisionsWithSkiers<=2){
