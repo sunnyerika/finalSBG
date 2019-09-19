@@ -299,23 +299,6 @@ Play.prototype = {
         console.log("number of skiers: " + numberOfCollisionsWithSkiers);
       }
     });
-    /*
-        rocks.forEach(function(n){
-          n.body.immovable = true;
-          n.body.moves = false;
-          //make player could collect skiers
-          if(game.physics.arcade.collide(snowBall0,n)){
-            numberOfCollisionsWithSkiers--;
-            snowBall0.animations.play('snowBallDeath');
-            score+=200;
-            scoreText.text='Score:'+score;
-            numberofSkiersText = 'Skier: '+ numberOfCollisionsWithSkiers;
-            console.log("number of skiers: " + numberOfCollisionsWithSkiers);
-          }
-
-        });
-        */
-
 
 
     rocks.forEach(function(n){
@@ -323,8 +306,13 @@ Play.prototype = {
       n.body.moves = false;
       //make player could collect skiers
       if(game.physics.arcade.collide(snowBall0,n)){
+        numberOfCollisionsWithSkiers--;
+        snowBall0.animations.play('snowBallDeath');
+        snowBallDeath=true;
+        score+=200;
+        scoreText.text='Score:'+score;
+        snowBall0.moves = false;
         if(numberOfCollisionsWithSkiers>0) {
-          numberOfCollisionsWithSkiers--;
           var throwSkier = damagedSkier.create(snowBall0.x + 10, snowBall0.y, 'damagedSkierAtlas', 'Damage_01');
           throwSkier.animations.add('flyingSkier', [0, 1, 2, 3, 4, 5, 6, 7], 10, false);
           throwSkier.animations.play('flyingSkier', 10, false);
@@ -332,16 +320,10 @@ Play.prototype = {
           snowBall0.y -= 100;
           snowBall0.x += 40;
         }
-        if(numberOfCollisionsWithSkiers <= 0){
-          snowBall0.animations.play('snowBallDeath');
-          snowBallDeath = true;
-          snowBall0.moves = false;
-        }
-        score-=200;
-        scoreText.text='Score:'+score;
-
-
       }
+      score-=200;
+      scoreText.text='Score:'+score;
+
 
     });
 
@@ -354,6 +336,7 @@ Play.prototype = {
         snowBall0.animations.play('snowBallDeath');
         score+=200;
         scoreText.text='Score:'+score;
+        snowBall0.moves = false;
         if(numberOfCollisionsWithSkiers>0) {
           var throwSkier = damagedSkier.create(snowBall0.x + 10, snowBall0.y, 'damagedSkierAtlas', 'Damage_01');
           throwSkier.animations.add('flyingSkier', [0, 1, 2, 3, 4, 5, 6, 7], 10, false);
