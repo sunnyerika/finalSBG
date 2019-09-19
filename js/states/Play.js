@@ -342,6 +342,31 @@ Play.prototype = {
 
     });
 
+    trees.forEach(function(n){
+      n.body.immovable = true;
+      n.body.moves = false;
+      //make player could collect skiers
+      if(game.physics.arcade.collide(snowBall0,n)){
+        numberOfCollisionsWithSkiers--;
+        snowBall0.animations.play('snowBallDeath');
+        snowBallDeath = true;
+        snowBall0.moves = false;
+        score+=200;
+        scoreText.text='Score:'+score;
+        numberofSkiersText = 'Skier: '+ numberOfCollisionsWithSkiers;
+        console.log("number of skiers: " + numberOfCollisionsWithSkiers);
+        if(numberOfCollisionsWithSkiers>0) {
+          var throwSkier = damagedSkier.create(snowBall0.x + 10, snowBall0.y, 'damagedSkierAtlas', 'Damage_01');
+          throwSkier.animations.add('flyingSkier', [0, 1, 2, 3, 4, 5, 6, 7], 10, false);
+          throwSkier.animations.play('flyingSkier', 10, false);
+          soundFlyingSkier.play();
+          snowBall0.y -= 100;
+          snowBall0.x += 40;
+        }
+      }
+
+    });
+
     /*
     if(numberOfCollisionsWithSkiers<=2){
     	game.physics.arcade.collide(snowBall0,rocks,snowCollideRocks,null,this);
@@ -351,7 +376,7 @@ Play.prototype = {
 
     //game.physics.arcade.collide(points100group,treeLayer);
     //game.physics.arcade.collide(snowBall0,treeLayer,snowCollideTree,null,this);
-    game.physics.arcade.collide(snowBall0,trees,snowCollideTrees,null,this);
+    //game.physics.arcade.collide(snowBall0,trees,snowCollideTrees,null,this);
     game.physics.arcade.overlap(snowBall0,lakes,iceSpeed,null,this);
     game.physics.arcade.overlap(snowBall0,floor,winner,null,this);
 
