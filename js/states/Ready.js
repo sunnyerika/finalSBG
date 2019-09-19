@@ -14,9 +14,12 @@ Ready.prototype = {
     timer.start();
     if(timer.running){
 
-      var readyText = game.add.text(game.width/2,game.height/2,'Game is loading',{font:'Helvetica',fontSize:'48px',fill:'#fff'});
+      //var readyText = game.add.text(game.width/2,game.height/2,'Game is loading',{font:'Helvetica',fontSize:'48px',fill:'#fff'});
 
-      readyText.anchor.set(0.5);
+     // readyText.anchor.set(0.5);
+      var img = game.add.image(game.width/2,game.height/3 + 200, 'logo');
+      img.anchor.set(0.5);
+      img.scale.setTo(0.1,0.1);
     }
 
     readySnow = game.add.sprite(70, game.height/2+100, 'snowBallAtlasNew','Snow_ball_0_01');
@@ -25,6 +28,7 @@ Ready.prototype = {
     readySnow.checkWorldBounds = true;
     readySnow.animations.add('snowBallRolling',[0,1,2],10,true);
     readySnow.animations.play('snowBallRolling',10,true);
+
     readySnow.body.velocity.x = 500;
     readySnow.events.onOutOfBounds.add(snowOut,this);
 
