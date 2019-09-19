@@ -17,6 +17,7 @@ Load.prototype ={
     game.load.image('skier','img/Skier.png');
     game.load.image('snowball','img/Snow_ball.png');
     game.load.image('rock','img/rock.png');
+    game.load.image('logo','img/LOGO_Final_01.png');
     game.load.atlas('snowBallAtlas','img/snowBallAtlas.png','img/snowBallAtlas.json');
     game.load.atlas('snowBallAtlasNew','img/snowBallAtlasNew.png','img/snowBallAtlasNew.json');
     game.load.atlas('snowBallAtlasHuge','img/snowBallAtlasHuge.png','img/snowBallAtlasHuge.json');

@@ -51,7 +51,7 @@ var damagedSkier;
 //var snowBall2;
 //var snowBall3;
 //var collision = false;
-
+var timeCheck;
 
 
 
@@ -272,6 +272,10 @@ Play.prototype = {
     game.state.start('GameOver');
   },
 
+  myFunction:function(){
+    timeCheck = game.time.now;
+  },
+
 
   update:function(){
     game.scale.pageAlignHorizontally = true;
@@ -328,6 +332,37 @@ Play.prototype = {
         snowBall0.moves = false;
         score+=200;
         scoreText.text='Score:'+score;
+       /*
+        game.state.add('delay', {
+          create: function () {
+            console.log('create method called');
+            // fire the given callback every 100ms
+            game.time.events.add(2000, function () {
+              console.log('five secs passed');
+            });
+          }
+        });
+        /*
+    game.state.add('delay', {
+      create: function () {
+        console.log('create method called');
+        // fire the given callback every 100ms
+        game.time.events.add(5000, function () {
+          console.log('five secs passed');
+        });
+      }
+    });
+    */
+        //game.time.events.add(DELAY, function () {/* … */});﻿
+        //game.time.now + 1000;
+        //game.time.events.add(Phaser.Timer.SECOND * 4, game.state.start('GameOver'), this);
+        //game.state.start('GameOver');
+/*(
+       if (game.time.now - timeCheck > 3000){
+          game.state.start('GameOver')
+        }
+        */
+
         numberofSkiersText = 'Skier: '+ numberOfCollisionsWithSkiers;
         console.log("number of skiers: " + numberOfCollisionsWithSkiers);
         if(numberOfCollisionsWithSkiers>0) {
@@ -352,6 +387,24 @@ Play.prototype = {
         snowBallDeath = true;
         snowBall0.moves = false;
         score+=200;
+        /*
+        game.state.add('delay', {
+          create: function () {
+            console.log('create method called');
+            // fire the given callback every 100ms
+            game.time.events.add(5000, function () {
+              console.log('five secs passed');
+            });
+          }
+        });
+        */
+        //game.time.events.add(DELAY, function () {/* … */});﻿
+        //game.time.now + 1000;
+
+        //game.state.start('GameOver');
+        timer.add(3000);
+        timer.onEvent.add(game.state.start('GameOver'), this);
+        timer.start();
         scoreText.text='Score:'+score;
         numberofSkiersText = 'Skier: '+ numberOfCollisionsWithSkiers;
         console.log("number of skiers: " + numberOfCollisionsWithSkiers);
@@ -725,6 +778,13 @@ function winner(snowBall0,floor){
   game.state.start('GameOver');
 
 };
+function callFailScreen(snowBall0,groupr){
+  //win.play();
+  //boy.animations.play('win');
+  game.state.start('GameOver');
+
+};
+
 
 
 

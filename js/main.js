@@ -14,5 +14,6 @@ window.onload = function(){
   game.state.add('Play',Play);
   game.state.add('GameOver',GameOver);
   game.state.start('Load');
+
 };
 
