@@ -10,7 +10,7 @@ Load.prototype ={
     game.load.path = 'assets/';
     //game.load.atlas('atlas','img/cloneSheet.png','img/cloneSheet.json');
     //load tilemap
-    game.load.tilemap('mapSheet','img/mapShort.json',null,Phaser.Tilemap.TILED_JSON);//little trees with rocks - all obsticles
+    game.load.tilemap('mapSheet','img/mapShort2.json',null,Phaser.Tilemap.TILED_JSON);//little trees with rocks - all obsticles
     game.load.image('mapSprite','img/TileSet3.png',32,32);
     //load player, fish, diamond, bullet assets
     game.load.image('tree','img/snowyTree.png');

@@ -184,7 +184,7 @@ Play.prototype = {
     //snowball.anchor.setTo(1,1);
 
     //snowBall0 = game.add.sprite(600, 3500, 'snowBallAnimation0');//x, y, key, displaying the first frame by default
-    snowBall0 = game.add.sprite(1280, 75800, 'newSnowballAtlas','Snowball 0-1');
+    snowBall0 = game.add.sprite(1280, 38000, 'newSnowballAtlas','Snowball 0-1');
     game.physics.enable(snowBall0);
     snowBall0.body.collideWorldBounds = true;
     snowBall0.anchor.setTo(0.5,0.5);
