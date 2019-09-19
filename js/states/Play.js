@@ -208,7 +208,7 @@ Play.prototype = {
 
 
 
-    game.camera.follow(snowBall0);
+    
     game.camera.roundPixels = true;
 
 
@@ -271,7 +271,7 @@ Play.prototype = {
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
     game.scale.refresh();
-
+    game.camera.focusOnXY(snowBall0.x,snowBall0.y-200);
 
     updateCollision = false;
 
