@@ -2,7 +2,7 @@
 var GameOver = function(game){};
 GameOver.prototype = {
   create:function(){
-    var overText = game.add.text(game.width/5*2.05,game.height/3,'Game Over',{font:'Helvetica',fontSize:'48px',fill:'#fff'});
+    var overText = game.add.text(game.width/5*2.05,game.height/3,'YOU WON',{font:'Helvetica',fontSize:'48px',fill:'#fff'});
     var restartText = game.add.text(game.width/2,game.height/2+256,'Press F to Restart',{font:'Helvetica',fontSize:'48px',fill:'#fff'});
     var scoreText = game.add.text(game.width/2,game.height/2,'Your Score: '+ score,{font:'Helvetica',fontSize:'48px',fill:'#fff'});
 

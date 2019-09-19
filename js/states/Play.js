@@ -619,6 +619,8 @@ Play.prototype = {
 
 
   },
+
+  /*
   render:function(){
     game.debug.body(snowBall0);
     //game.debug.body(skierGroup);
