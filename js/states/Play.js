@@ -213,7 +213,7 @@ Play.prototype = {
 
 
     //create finish line
-    finishLine = game.add.sprite(640,20,'finishLine');
+    finishLine = game.add.sprite(1280,20,'finishLine');
     //game.physics.enable(finishLine);
     finishLine.anchor.setTo(0.5,0.5);
     finishLine.scale.setTo(8,4);
@@ -222,7 +222,7 @@ Play.prototype = {
     //create a rectangle in the coin fountain to collide with player
     //once player collides with the rectangle, the game ends
     //the rectangle is invisible
-    floor = game.add.sprite(640,20,'rectangle');
+    floor = game.add.sprite(1280,20,'rectangle');
     floor.scale.setTo(8,2);
     floor.anchor.setTo(0.5,0.5);
     game.physics.enable(floor);
@@ -326,7 +326,7 @@ Play.prototype = {
     }
     if(numberOfCollisionsWithSkiers == 0 && ifSpeed == 0 && booleanHitRock) {
       snowBall0.animations.play('snowBallRolling');
-      snowBall0.body.setSize(64,64,0,0);
+      snowBall0.body.setSize(50,50,5,10);
       snowBall0.body.velocity.y = -350;
       //score +=1;
       scoreText.text='Score:'+score;
@@ -335,7 +335,7 @@ Play.prototype = {
 
     else if(numberOfCollisionsWithSkiers == 1 &&ifSpeed ==0){
       snowBall0.animations.play('collide1');//skier collision animation
-      snowBall0.body.setSize(80,80,0,10);
+      snowBall0.body.setSize(100,100,10,10);
       snowBall0.body.velocity.y = -430;
       score +=1;
       scoreText.text='Score:'+score;
@@ -343,21 +343,21 @@ Play.prototype = {
     }
     else if(numberOfCollisionsWithSkiers ==2 && ifSpeed ==0){
       snowBall0.animations.play('collide2');
-      snowBall0.body.setSize(110,110,0,15);
+      snowBall0.body.setSize(160,170,20,10);
       snowBall0.body.velocity.y = -580;
       score +=1;
       scoreText.text='Score:'+score;
     }
     else if(numberOfCollisionsWithSkiers ==3 &&ifSpeed ==0){
       snowBall0.animations.play('collide3');
-      snowBall0.body.setSize(180,180,30,50);
+      snowBall0.body.setSize(200,240,30,10);
       snowBall0.body.velocity.y = -610;
       score +=1;
       scoreText.text='Score:'+score;
     }
     else if(numberOfCollisionsWithSkiers ==4 &&ifSpeed ==0){
       snowBall0.animations.play('collide4', 10, true);
-      snowBall0.body.setSize(256,256,50,70);
+      snowBall0.body.setSize(270,300,30,30);
       snowBall0.body.velocity.y = -740;
       score +=1;
       scoreText.text='Score:'+score;
@@ -365,7 +365,7 @@ Play.prototype = {
 
     else if(numberOfCollisionsWithSkiers ==5 &&ifSpeed ==0){
       snowBall0.animations.play('collide5', 10, true);
-      snowBall0.body.setSize(384,384,40,50);
+      snowBall0.body.setSize(400,400,40,50);
       snowBall0.body.velocity.y = -870;
       score +=1;
       scoreText.text='Score:'+score;
@@ -620,7 +620,7 @@ Play.prototype = {
 
   },
 
-  /*
+  
   render:function(){
     game.debug.body(snowBall0);
     //game.debug.body(skierGroup);
